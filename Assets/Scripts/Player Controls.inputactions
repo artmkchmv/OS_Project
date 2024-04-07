@@ -2,7 +2,7 @@
     "name": "Player Controls",
     "maps": [
         {
-            "name": "Movement",
+            "name": "Player",
             "id": "a4054877-857a-4eb2-89e4-3f1726c81f70",
             "actions": [
                 {
@@ -10,6 +10,24 @@
                     "type": "PassThrough",
                     "id": "a575c8ee-7867-470a-b9f0-8ba85916d273",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "75307003-ee1b-427e-aa8a-145cd7ccd5f7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Scope",
+                    "type": "Button",
+                    "id": "a3f006ea-306b-4488-9aa3-ca3934275456",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -70,32 +88,26 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                }
-            ]
-        },
-        {
-            "name": "Shooting",
-            "id": "1958a98b-0b63-44a9-b6d4-92dac837df40",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "7f18cdac-8948-432d-b587-059a406b1a33",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "880af7eb-f420-4475-9885-e2b74d17b6ec",
-                    "path": "",
+                    "id": "d192ebbb-435b-4795-b67c-d09dfa6fc9c9",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da991d92-188f-46e3-9fd9-0c5c95a014ce",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scope",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
