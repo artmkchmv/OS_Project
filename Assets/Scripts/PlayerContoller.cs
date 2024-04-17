@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         if (myAnimator.GetBool("Scope"))
         {
             myAnimator.SetBool("Attack", true);
-            Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             myAnimator.SetBool("Scope", false);
         }
