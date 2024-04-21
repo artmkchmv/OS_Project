@@ -12,8 +12,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator myAnimator;
     private SpriteRenderer mySpriteRenderer;
-    public Transform firePoint;
     public GameObject bulletPrefab;
+    public Transform firePoint;
+
 
     private void Awake()
     {
@@ -92,12 +93,10 @@ public class PlayerController : MonoBehaviour
         if (mousePos.x < playerScreenPoint.x)
         {
             mySpriteRenderer.flipX = true;
-            firePoint.localPosition = new Vector3(-firePoint.localPosition.x, firePoint.localPosition.y, firePoint.localPosition.z);
         }
         else
         {
             mySpriteRenderer.flipX = false;
-            firePoint.localPosition = new Vector3(-firePoint.localPosition.x, firePoint.localPosition.y, firePoint.localPosition.z);
         }
     }
 }
