@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Sound
 {
     [SerializeField] private float moveSpeed = 1f;
 
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         AdjustPlayerFacingDirection();
-        Move(); 
+        Move();
     }
 
     private void PlayerInput()
@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
         {
             myAnimator.SetBool("Attack", true);
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            PlaySound(sounds[1], 2f);
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             myAnimator.SetBool("Scope", false);
         }
@@ -89,7 +90,6 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 mousePos = Input.mousePosition;
         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
-
         if (mousePos.x < playerScreenPoint.x)
         {
             mySpriteRenderer.flipX = true;
@@ -98,5 +98,10 @@ public class PlayerController : MonoBehaviour
         {
             mySpriteRenderer.flipX = false;
         }
+    }
+
+    private void SnowSound()
+    {
+        PlaySound(sounds[0]);
     }
 }
