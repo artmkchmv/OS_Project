@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
 {
     public float bulletSpeed = 20f;
     public float timeDestroy = 3f;
-    public float bulletForce = 10f;
+    public float bulletForce = 50f;
     public GameObject hitEffect;
     public Rigidbody2D rb;
 

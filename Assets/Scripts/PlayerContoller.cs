@@ -15,7 +15,6 @@ public class PlayerController : Sound
     public GameObject bulletPrefab;
     public Transform firePoint;
 
-
     private void Awake()
     {
         playerControls = new PlayerControls();
