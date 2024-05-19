@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
 {
     public float bulletSpeed = 20f;
     public float timeDestroy = 3f;
-    public int damage = 10;
+    public float bulletForce = 10f;
     public GameObject hitEffect;
     public Rigidbody2D rb;
 
@@ -18,11 +18,20 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (hitInfo.name != "Player")
+        if (hitInfo.name != "Player" && hitInfo.name != "table")
         {
-            Debug.Log(hitInfo.name);
             Instantiate(hitEffect, transform.position, transform.rotation);
             Destroy(gameObject);
+            if (hitInfo.CompareTag("Can"))
+            {
+                Rigidbody2D bankRigidbody = hitInfo.GetComponent<Rigidbody2D>();
+                if (bankRigidbody != null)
+                {
+                    Vector2 direction = hitInfo.transform.position - transform.position;
+                    direction = direction.normalized;
+                    bankRigidbody.AddForce(direction * bulletForce, ForceMode2D.Impulse);
+                }
+            }
         }
     }
 }
