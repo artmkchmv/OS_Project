@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float bulletSpeed = 20f;
+    public float bulletSpeed = 30f;
     public float timeDestroy = 3f;
     public float bulletForce = 50f;
     public GameObject hitEffect;
@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (hitInfo.name != "Player" && hitInfo.name != "table")
+        if (hitInfo.name != "Player" && hitInfo.name != "table" && hitInfo.name != "ButtonTrigger" && hitInfo.name != "fence")
         {
             Instantiate(hitEffect, transform.position, transform.rotation);
             Destroy(gameObject);
