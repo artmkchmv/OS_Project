@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Table
   - Can
+  - Enemy
   layers:
   - Default
   - TransparentFX

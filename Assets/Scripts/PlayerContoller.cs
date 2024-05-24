@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : Sound
 {
     [SerializeField] private float moveSpeed = 1f;
-
+    public int health;
     private PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
@@ -64,7 +64,7 @@ public class PlayerController : Sound
         }
         else
         {
-            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
             myAnimator.SetBool("Scope", true);
         }
     }
@@ -102,5 +102,10 @@ public class PlayerController : Sound
     private void SnowSound()
     {
         PlaySound(sounds[0]);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
     }
 }
