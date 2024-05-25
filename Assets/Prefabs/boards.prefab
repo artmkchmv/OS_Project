@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6491308792149005945}
   - component: {fileID: 1806800468009698065}
   - component: {fileID: 8403825303300596799}
+  - component: {fileID: -9094925610965552775}
   m_Layer: 0
   m_Name: boards
   m_TagString: Untagged
@@ -162,3 +163,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotButton: {fileID: 8011534038499449853, guid: f165a26e24d6c5f49bf0247ce4849a02, type: 3}
+--- !u!114 &-9094925610965552775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5365328754807968502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702abd4fb3792fe41b2cf9988ff09357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

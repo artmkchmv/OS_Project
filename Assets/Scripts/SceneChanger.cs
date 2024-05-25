@@ -1,12 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public void changeScene(int scene)
+    private Animator animator;
+    public int sceneNum;
+    public Vector3 position;
+    public VectorValue playerStorage;
+
+    private void Start()
     {
-        SceneManager.LoadScene(scene); 
+        animator = GetComponent<Animator>();
+    }
+
+    public void FadeToLevel()
+    {
+        animator.SetTrigger("fade");
+    }
+
+    public void OnFadeComplete()
+    {
+        playerStorage.intitialValue = position;
+        SceneManager.LoadScene(sceneNum);
     }
 }

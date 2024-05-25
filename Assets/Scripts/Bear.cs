@@ -6,12 +6,13 @@ using UnityEngine;
 public class Bear : MonoBehaviour
 {
     public int health;
-    public float speed = 5;
+    public float speed;
+    public int damage;
     public float chaseRadius;
     public bool chaseStatus;
-    public Animator animator;
     public Transform player;
     public int deathAnimationDuration = 1;
+    private Animator animator;
 
     private void Start()
     {
@@ -24,6 +25,13 @@ public class Bear : MonoBehaviour
         {
             animator.SetInteger("healthStatus", 0);
             StartCoroutine(DestroyAfterAnimation(deathAnimationDuration));
+            return;
+        }
+
+        if (HeartSystem.health == 0)
+        {
+            speed = 0;
+            animator.SetBool("chaseStatus", false);
             return;
         }
 
@@ -72,8 +80,18 @@ public class Bear : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            StopChase();
-            Attack();
+            if (HeartSystem.health > 0)
+            {
+                HeartSystem.health -= 1;
+                StopChase();
+                Attack();
+            }
+            else
+            {
+                animator.SetBool("chaseStatus", false);
+                chaseStatus = false;
+                speed = 0;
+            }
         }
     }
 
@@ -86,7 +104,6 @@ public class Bear : MonoBehaviour
     private void Attack()
     {
         animator.SetBool("attackStatus", true);
-        // Возможно, здесь нужно будет добавить логику нанесения урона игроку
     }
 
     public void OnAttackAnimationEnd()

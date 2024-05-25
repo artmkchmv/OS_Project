@@ -7,16 +7,21 @@ public class PlayerController : Sound
 {
     [SerializeField] private float moveSpeed = 1f;
     public int health;
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    public VectorValue pos;
+    public Texture2D cursorTextureBase;
+    public Texture2D cursorTextureScope;
     private PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
     private Animator myAnimator;
     private SpriteRenderer mySpriteRenderer;
-    public GameObject bulletPrefab;
-    public Transform firePoint;
+    private bool isSoundPlaying = false;
 
     private void Awake()
     {
+        transform.position = pos.intitialValue;
         playerControls = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
@@ -44,7 +49,6 @@ public class PlayerController : Sound
     private void PlayerInput()
     {
         movement = playerControls.Player.Move.ReadValue<Vector2>();
-
         myAnimator.SetFloat("moveX", movement.x);
         myAnimator.SetFloat("moveY", movement.y);
     }
@@ -61,11 +65,13 @@ public class PlayerController : Sound
         {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             myAnimator.SetBool("Scope", false);
+            BackCursor();
         }
         else
         {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             myAnimator.SetBool("Scope", true);
+            ChangeCursor();
         }
     }
 
@@ -78,6 +84,7 @@ public class PlayerController : Sound
             PlaySound(sounds[1], 2f);
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             myAnimator.SetBool("Scope", false);
+            BackCursor();
         }
         else
         {
@@ -101,11 +108,39 @@ public class PlayerController : Sound
 
     private void SnowSound()
     {
-        PlaySound(sounds[0]);
+        if (!isSoundPlaying)
+        {
+            PlaySound(sounds[0]);
+            isSoundPlaying = true;
+        }
     }
 
-    public void TakeDamage(int damage)
+    private void ResetSoundFlag()
     {
-        health -= damage;
+        isSoundPlaying = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            health -= 33;
+        }
+        
+        if (collision.gameObject.name == "BoardsCarryChecker")
+        {
+            ArrowsStart.arrowBoardsCarry.SetActive(false);
+            ArrowsStart.arrowBoardsDrop.SetActive(true);
+        }
+    }
+
+    public void ChangeCursor()
+    {
+        Cursor.SetCursor(cursorTextureScope, Vector2.zero, CursorMode.Auto);
+    }
+
+    public void BackCursor()
+    {
+        Cursor.SetCursor(cursorTextureBase, Vector2.zero, CursorMode.Auto);
     }
 }

@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float bulletSpeed = 30f;
-    public float timeDestroy = 3f;
-    public float bulletForce = 50f;
-    public int damage = 20;
+    public float bulletSpeed;
+    public float timeDestroy;
+    public float bulletForce;
+    public int damage;
     public GameObject hitEffect;
     public Rigidbody2D rb;
 
@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (hitInfo.name != "Player" && hitInfo.name != "table" && hitInfo.name != "ButtonTrigger" && hitInfo.name != "fence")
+        if (hitInfo.name != "Player" && hitInfo.name != "table" && hitInfo.name != "ButtonTrigger" && hitInfo.name != "fence" && hitInfo.name != "WALL" && hitInfo.name != "NPC_1_Dialog" && hitInfo.name != "NPC_2_Dialog" && hitInfo.name != "NPC_3_Dialog")
         {
             Instantiate(hitEffect, transform.position, transform.rotation);
             if(hitInfo.CompareTag("Enemy"))

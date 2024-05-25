@@ -99,9 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8921b30172ace443ac48f86bf9345d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 25
-  timeDestroy: 2
-  damage: 10
+  bulletSpeed: 30
+  timeDestroy: 3
+  bulletForce: 50
+  damage: 1
   hitEffect: {fileID: 3140190843705957375, guid: 813c447971d891047892dd563489b191, type: 3}
   rb: {fileID: 7237864287454617553}
 --- !u!50 &7237864287454617553
