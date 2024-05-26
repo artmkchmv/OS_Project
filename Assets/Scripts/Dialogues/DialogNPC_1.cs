@@ -30,10 +30,14 @@ public class DialogNPC_1 : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         if (questStatus == 0)
         {
+            questCollider1.SetActive(false);
+            button1.SetTrigger("isTriggered");
             text1.SetBool("start", true);
         }
         else
         {
+            questCollider2.SetActive(false);
+            button2.SetTrigger("isTriggered");
             text3.SetBool("start1_3", true);
         }
     }
@@ -57,20 +61,17 @@ public class DialogNPC_1 : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         if (questStatus == 0)
         {
-            text2.SetBool("start1_2", false);
-            questCollider1.SetActive(false);
-            button1.SetTrigger("isTriggered");
             questStatus = 1;
-            DialogNPC_3.questCollider1.SetActive(true);
+            text2.SetBool("start1_2", false);
             ArrowsStart.arrowNPC1.SetActive(false);
             ArrowsStart.arrowNPC3.SetActive(true);
+            DialogNPC_3.questCollider1.SetActive(true);
         }
         else
         {
+            text4.SetBool("start1_4", false);
             ArrowsStart.arrowNPC1.SetActive(false);
             ArrowsStart.arrowNPC2.SetActive(true);
-            text4.SetBool("start1_4", false);
-            questCollider2.SetActive(false);
             DialogNPC_2.questCollider.SetActive(true);
         }
     }

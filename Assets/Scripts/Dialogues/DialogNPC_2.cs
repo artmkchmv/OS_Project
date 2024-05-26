@@ -25,6 +25,8 @@ public class DialogNPC_2 : MonoBehaviour
     public void StartDialog()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        questCollider.SetActive(false);
+        button.SetTrigger("isTriggered");
         text1.SetBool("start2_1", true);
     }
 
@@ -36,12 +38,11 @@ public class DialogNPC_2 : MonoBehaviour
 
     public void AcceptDialog()
     {
-        ArrowsStart.arrowNPC2.SetActive(false);
-        ArrowsStart.arrowFishCarry.SetActive(true);
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         text2.SetBool("start2_2", false);
+        ArrowsStart.arrowNPC2.SetActive(false);
+        ArrowsStart.arrowFishCarry.SetActive(true);
         Instantiate(questItem, new Vector3((float)31.49, (float)-26.24), Quaternion.identity);
-        questCollider.SetActive(false);
         Destroy(questBearWall);
         FishCarryChecker.fishFlag = true;
     }
