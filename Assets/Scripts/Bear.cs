@@ -10,13 +10,16 @@ public class Bear : MonoBehaviour
     public int damage;
     public float chaseRadius;
     public bool chaseStatus;
-    public Transform player;
     public int deathAnimationDuration = 1;
     private Animator animator;
+    private Transform playerPos;
+    private GameObject player;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        player = GameObject.Find("Player");
+        playerPos = player.transform;
     }
 
     private void Update()
@@ -35,10 +38,10 @@ public class Bear : MonoBehaviour
             return;
         }
 
-        if (player != null && Vector2.Distance(transform.position, player.position) <= chaseRadius)
+        if (playerPos != null && Vector2.Distance(transform.position, playerPos.position) <= chaseRadius)
         {
             chaseStatus = true;
-            Vector2 direction = (player.position - transform.position).normalized;
+            Vector2 direction = (playerPos.position - transform.position).normalized;
             transform.Translate(direction * speed * Time.deltaTime);
 
             if (direction.x < 0)

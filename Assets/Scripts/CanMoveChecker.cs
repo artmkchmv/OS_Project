@@ -4,12 +4,10 @@ public class CanMoveChecker : MonoBehaviour
 {
     public GameObject[] cans;
     public static bool status;
-    public static GameObject questCollider;
 
     private void Start()
     {
         status = false;
-        questCollider = GameObject.Find("NPC_3_2_Dialog");
     }
 
     private void Update()
@@ -17,7 +15,7 @@ public class CanMoveChecker : MonoBehaviour
         if (AllCansMoved())
         {
             status = true;
-            questCollider.SetActive(true);
+            DialogNPC_3.questCollider2.SetActive(true);
             ArrowsStart.arrowCans.SetActive(false);
             ArrowsStart.arrowNPC3.SetActive(true);
             this.enabled = false;

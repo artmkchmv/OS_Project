@@ -14,6 +14,7 @@ public class DialogNPC_3 : MonoBehaviour
     public static GameObject questCollider2;
     public GameObject questItem;
     private Rigidbody2D rb;
+    public static GameObject questCansWall;
     private static int questStatus;
 
     private void Start()
@@ -24,6 +25,7 @@ public class DialogNPC_3 : MonoBehaviour
         questCollider2 = GameObject.Find("NPC_3_2_Dialog");
         questCollider1.SetActive(false);
         questCollider2.SetActive(false);
+        questCansWall = GameObject.Find("QuestCansWall");
     }
 
     public void StartDialog()
@@ -52,6 +54,7 @@ public class DialogNPC_3 : MonoBehaviour
         {
             text2.SetBool("start3_2", false);
             questCollider1.SetActive(false);
+            Destroy(questCansWall);
             questStatus = 1;
             ArrowsStart.arrowNPC3.SetActive(false);
             ArrowsStart.arrowCans.SetActive(true);
