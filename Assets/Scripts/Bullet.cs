@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (hitInfo.name != "Player" && hitInfo.name != "table" && hitInfo.name != "ButtonTrigger" && hitInfo.name != "fence" && hitInfo.name != "WALL" && hitInfo.name != "NPC_1_Dialog" && hitInfo.name != "NPC_2_Dialog" && hitInfo.name != "NPC_3_Dialog" && hitInfo.name != "FishCarryChecker" && hitInfo.name != "BoxColliderDefBear")
+        if (hitInfo.name != "Player" && hitInfo.name != "table" && hitInfo.name != "ButtonTrigger" && hitInfo.name != "fence" && hitInfo.name != "WALL" && hitInfo.name != "NPC_1_Dialog" && hitInfo.name != "NPC_2_Dialog" && hitInfo.name != "NPC_3_Dialog" && hitInfo.name != "FishCarryChecker" && hitInfo.name != "BoxColliderDefBear" && hitInfo.name != "BoardsDropChecker" && hitInfo.name != "BoardsCarryChecker")
         {
             Instantiate(hitEffect, transform.position, transform.rotation);
             if(hitInfo.CompareTag("Enemy"))

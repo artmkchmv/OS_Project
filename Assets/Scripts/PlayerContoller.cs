@@ -12,12 +12,14 @@ public class PlayerController : Sound
     public VectorValue pos;
     public Texture2D cursorTextureBase;
     public Texture2D cursorTextureScope;
+    public static bool dieStatus;
     private PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
     private Animator myAnimator;
     private SpriteRenderer mySpriteRenderer;
-    private bool isSoundPlaying = false;
+    private GameObject mainHouse;
+    private GameObject npcHouse;
 
     private void Awake()
     {
@@ -26,6 +28,7 @@ public class PlayerController : Sound
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+        dieStatus = false;
     }
 
     private void OnEnable()
@@ -37,6 +40,12 @@ public class PlayerController : Sound
 
     private void Update()
     {
+        if (health == 0)
+        {
+            dieStatus = true;
+            myAnimator.SetTrigger("DieTrigger");
+            this.enabled = false;
+        }
         PlayerInput();
     }
 
@@ -108,23 +117,14 @@ public class PlayerController : Sound
 
     private void SnowSound()
     {
-        if (!isSoundPlaying)
-        {
-            PlaySound(sounds[0]);
-            isSoundPlaying = true;
-        }
-    }
-
-    private void ResetSoundFlag()
-    {
-        isSoundPlaying = false;
+        PlaySound(sounds[0]);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            health -= 33;
+            health -= 1;
         }
         
         if (collision.gameObject.name == "BoardsCarryChecker")

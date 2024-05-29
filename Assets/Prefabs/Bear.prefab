@@ -100,13 +100,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e04fbc61e7dc342bc509f9a1279d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 7
   speed: 15
   damage: 1
-  chaseRadius: 15
+  chaseRadius: 16
   chaseStatus: 0
-  player: {fileID: 0}
   deathAnimationDuration: 5
+  bearHead: {fileID: 4414852379327593073, guid: 6ccc15673ad2a2041a68cd424f6da66f, type: 3}
 --- !u!70 &2312913274258550557
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

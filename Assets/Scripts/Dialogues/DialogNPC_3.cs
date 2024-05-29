@@ -68,6 +68,7 @@ public class DialogNPC_3 : MonoBehaviour
             Instantiate(questItem, new Vector3((float)69, (float)-24), Quaternion.identity);
             ArrowsStart.arrowNPC3.SetActive(false);
             ArrowsStart.arrowBoardsCarry.SetActive(true);
+            BoardsCarryChecker.boardsFlag = true;
         }
     }
 }

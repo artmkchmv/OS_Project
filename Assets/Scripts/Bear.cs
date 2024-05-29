@@ -11,6 +11,7 @@ public class Bear : MonoBehaviour
     public float chaseRadius;
     public bool chaseStatus;
     public int deathAnimationDuration = 1;
+    public GameObject bearHead;
     private Animator animator;
     private Transform playerPos;
     private GameObject player;
@@ -28,7 +29,8 @@ public class Bear : MonoBehaviour
         {
             animator.SetInteger("healthStatus", 0);
             StartCoroutine(DestroyAfterAnimation(deathAnimationDuration));
-            return;
+            Instantiate(bearHead, transform.position, Quaternion.identity);
+            this.enabled = false;
         }
 
         if (HeartSystem.health == 0)

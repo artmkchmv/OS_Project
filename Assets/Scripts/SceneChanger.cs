@@ -3,10 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    private Animator animator;
     public int sceneNum;
     public Vector3 position;
     public VectorValue playerStorage;
+    private Animator animator;
 
     private void Start()
     {
